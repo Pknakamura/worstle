@@ -73,7 +73,7 @@ void dfs_search(vector<unsigned int> &current,
             unsigned int new_restrict = restrict | word;
 
             vector<unsigned int> new_candidates;
-            for(size_t j = i; j < candidates.size(); j++){
+            for(size_t j = i + 1; j < candidates.size(); j++){
                 if((new_restrict & candidates[j]) == 0){
                     new_candidates.push_back(candidates[j]);
                 }
@@ -122,6 +122,7 @@ int main(){
         answers[encoding].push_back(temp_string);
         initials.push_back(encoding);
     }
+    ansfs.close();
     sort(initials.begin(),initials.end());
     initials.erase(unique(initials.begin(), initials.end()), initials.end());
 
@@ -133,6 +134,7 @@ int main(){
         words[encoding].push_back(temp_string);
         candidates.push_back(encoding);
     }
+    wordfs.close();
     sort(candidates.begin(),candidates.end());
     candidates.erase(unique(candidates.begin(), candidates.end()), candidates.end());
 
